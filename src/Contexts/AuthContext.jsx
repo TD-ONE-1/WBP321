@@ -13,13 +13,10 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (data) => {
     const res = await AuthService.login(data);
-
-    if (res.success) {
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("userDetail", JSON.stringify(res.data.userDetail));
-
-      setUser(res.data.userDetail);
-
+    if (res != null) {
+      localStorage.setItem("token", res.token);
+      localStorage.setItem("userDetail", JSON.stringify(res.userDetail));
+      setUser(res.userDetail);
       navigate("/dashboard");
     } else {
       throw new Error(res.message);

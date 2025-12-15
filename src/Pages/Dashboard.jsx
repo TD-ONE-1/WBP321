@@ -42,55 +42,6 @@ export default function Login() {
   };
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="100vh"
-      bgcolor="#f0f0f0"
-    >
-      <Paper elevation={3} sx={{ p: 4, width: 400 }}>
-        <Typography variant="h5" textAlign="center" mb={2}>
-          Login
-        </Typography>
-
-        {errorMsg && (
-          <Typography color="error" mb={2}>
-            {errorMsg}
-          </Typography>
-        )}
-
-        <form onSubmit={handleSubmit}>
-          <TextField
-            fullWidth
-            label="Username"
-            name="username"
-            value={values.username}
-            onChange={handleChange}
-            margin="normal"
-          />
-
-          <TextField
-            fullWidth
-            label="Password"
-            type="password"
-            name="password"
-            value={values.password}
-            onChange={handleChange}
-            margin="normal"
-          />
-
-          <Button
-            fullWidth
-            type="submit"
-            variant="contained"
-            sx={{ mt: 2 }}
-            disabled={loading}
-          >
-            {loading ? <CircularProgress size={24} /> : 'Login'}
-          </Button>
-        </form>
-      </Paper>
-    </Box>
+    <div></div>
   );
 }
