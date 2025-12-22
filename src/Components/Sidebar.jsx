@@ -7,7 +7,7 @@ export default function Sidebar() {
       <img src="/vite.svg" onClick={() => navigate("/dashboard")} />
       <ul>
         <li>
-          <Link to="/dashboard" className="d-flex align-items-center gap-1">
+          <Link to="/restaurant" className="d-flex align-items-center gap-1">
             <i className="bi bi-shop"></i>
             <span>Restaurant</span>
           </Link>

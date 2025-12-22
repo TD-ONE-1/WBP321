@@ -12,10 +12,10 @@ const FormButton = ({ onClick, loading = false, text = "Submit", sx = {} }) => {
         borderRadius: "5px",
         backgroundColor: "#111",
         "&:hover": { backgroundColor: "#333" },
-        ...sx,
+        sx,
       }}
     >
-      {loading ? `${text}...` : text}
+      {loading ? `${text}` : text}
     </Button>
   );
 };
