@@ -1,9 +1,9 @@
-import { TextField, Box } from "@mui/material";
+import { TextField } from "@mui/material";
 
 export default function BasicInfoStep({ formData, setFormData }) {
   const data = formData.basicInfo;
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       basicInfo: {
@@ -14,11 +14,31 @@ export default function BasicInfoStep({ formData, setFormData }) {
   };
 
   return (
-    <Box display="grid" gap={2}>
-      <TextField label="Name" name="name" value={data.name} onChange={handleChange} />
-      <TextField label="About" name="about_Description" value={data.about_Description} onChange={handleChange} />
-      <TextField label="Cuisine Type" name="cuisineType" value={data.cuisineType} onChange={handleChange} />
-      <TextField label="Price Range" name="priceRange" value={data.priceRange} onChange={handleChange} />
-    </Box>
+    <div class="restaurantBI">
+      <TextField
+        label="Name"
+        name="name"
+        value={data.name}
+        onChange={handleChange}
+      />
+      <TextField
+        label="About"
+        name="about_Description"
+        value={data.about_Description}
+        onChange={handleChange}
+      />
+      <TextField
+        label="Cuisine Type"
+        name="cuisineType"
+        value={data.cuisineType}
+        onChange={handleChange}
+      />
+      <TextField
+        label="Price Range"
+        name="priceRange"
+        value={data.priceRange}
+        onChange={handleChange}
+      />
+    </div>
   );
 }

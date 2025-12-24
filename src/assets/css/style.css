@@ -1,3 +1,35 @@
+/* restaurant */
+.resturntMainDiv {
+  background-color: rgb(247, 247, 247);
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  padding: 20px;
+  min-height: 87vh;
+  overflow: auto;
+}
+.resturntMainHeading {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 20px !important;
+  border: 1px solid lightgray;
+  background: white;
+  border-radius: 5px;
+  padding: 10px !important;
+}
+.restaurantBI {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+.restaurantBr {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+/* restaurant */
 /* header */
 .headerDiv {
   height: 60px;
@@ -28,6 +60,16 @@
 /* SideHeader */
 a {
   text-decoration: none !important;
+}
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.css-vuhw6e-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root{
+  padding: 0px 0px 0px 10px !important;
+}
+.css-1umw9bq-MuiSvgIcon-root{
+  width: 0.7em !important;
 }
 .form-control:focus {
   outline: none;

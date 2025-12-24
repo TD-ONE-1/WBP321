@@ -4,9 +4,10 @@ import { useState } from "react";
 import BasicInfoStep from "./Steps/BasicInfoStep";
 import MediaStep from "./Steps/MediaStep";
 import ServicesStep from "./Steps/ServicesStep";
+import Branches from "./Steps/Branches";
 // import api from "./api";
 
-const steps = ["Basic Info", "Media", "Services"];
+const steps = ["Basic Info", "Media", "Services", "Branches"];
 
 export default function RestaurantWizard() {
   const [activeStep, setActiveStep] = useState(0);
@@ -88,13 +89,16 @@ export default function RestaurantWizard() {
         return <MediaStep formData={formData} setFormData={setFormData} />;
       case 2:
         return <ServicesStep formData={formData} setFormData={setFormData} />;
+      case 3:
+        return <Branches formData={formData} setFormData={setFormData} />;
       default:
         return null;
     }
   };
 
   return (
-    <Box p={3}>
+    <div class="resturntMainDiv">
+      <p class="resturntMainHeading">ADD RESTAURANT</p>
       <Stepper activeStep={activeStep}>
         {steps.map((label) => (
           <Step key={label}>
@@ -117,15 +121,14 @@ export default function RestaurantWizard() {
         </div>
         <div class="col-2">
           <FormButton
-          text={saving ? "Saving..." : isLastStep ? "Save" : "Next"}
+            text={saving ? "Saving..." : isLastStep ? "Save" : "Next"}
             loading={saving}
             onClick={
               isLastStep ? handleSave : () => setActiveStep((p) => p + 1)
             }
-          >
-          </FormButton>
+          ></FormButton>
         </div>
       </div>
-    </Box>
+    </div>
   );
 }

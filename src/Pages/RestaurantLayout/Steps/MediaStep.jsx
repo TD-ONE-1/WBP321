@@ -9,20 +9,34 @@ export default function MediaStep({ formData, setFormData }) {
   };
 
   return (
-    <Box display="grid" gap={2}>
+    <Box display="grid">
+      <p>Restaurant Logo</p>
       <Button component="label" variant="outlined">
-        Upload Logo
-        <input hidden type="file" onChange={e => updateMedia("logo", e.target.files[0])} />
+        Upload Image
+        <input
+          hidden
+          type="file"
+          onChange={(e) => updateMedia("logo", e.target.files[0])}
+        />
       </Button>
-
+      <p className="mt-2">Banner / Thumbnail Image</p>
       <Button component="label" variant="outlined">
-        Upload Banner
-        <input hidden type="file" onChange={e => updateMedia("banner", e.target.files[0])} />
+        Upload Image
+        <input
+          hidden
+          type="file"
+          onChange={(e) => updateMedia("banner", e.target.files[0])}
+        />
       </Button>
-
+      <p className="mt-2">Gallery Images (Multiple)</p>
       <Button component="label" variant="outlined">
-        Upload Gallery Images
-        <input hidden type="file" multiple onChange={e => updateMedia("gallery", [...e.target.files])} />
+        Upload Image
+        <input
+          hidden
+          type="file"
+          multiple
+          onChange={(e) => updateMedia("gallery", [...e.target.files])}
+        />
       </Button>
     </Box>
   );
