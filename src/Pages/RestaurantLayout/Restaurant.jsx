@@ -5,9 +5,10 @@ import BasicInfoStep from "./Steps/BasicInfoStep";
 import MediaStep from "./Steps/MediaStep";
 import ServicesStep from "./Steps/ServicesStep";
 import Branches from "./Steps/Branches";
+import TimingSlot from "./Steps/TimingSlot";
 // import api from "./api";
 
-const steps = ["Basic Info", "Media", "Services", "Branches"];
+const steps = ["Basic Info", "Media", "Services", "Branches", "Timing & Slots"];
 
 export default function RestaurantWizard() {
   const [activeStep, setActiveStep] = useState(0);
@@ -91,6 +92,8 @@ export default function RestaurantWizard() {
         return <ServicesStep formData={formData} setFormData={setFormData} />;
       case 3:
         return <Branches formData={formData} setFormData={setFormData} />;
+      case 4:
+        return <TimingSlot formData={formData} setFormData={setFormData} />;
       default:
         return null;
     }
