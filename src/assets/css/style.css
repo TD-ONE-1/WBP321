@@ -1,4 +1,11 @@
 /* dashboard */
+.PRbutonDiv{
+  display: grid;
+  grid-template-columns: 0.17fr 0.17fr;
+  justify-content: right;
+  column-gap: 10px;
+  margin: 10px 0px 10px 0px;
+}
 .clndrDiv,
 .top10Div {
   background-color: white;
