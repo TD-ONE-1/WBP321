@@ -53,12 +53,14 @@ function PendingEventQueries() {
         `Resturant/ConfirmEventQueries?EventQueriesIds=${combinedIds}&StatusType=${StatusType}`
       );
       if (response.data.success) {
+        setSelectedIds([]);
         toast.success(response.data.message);
         getEvents();
       } else {
         toast.error(response.data.message);
       }
     } catch (error) {
+      setSelectedIds([]);
       console.error("Error posting reservation:", error);
     }
   };
@@ -82,8 +84,7 @@ function PendingEventQueries() {
               <TableCell padding="checkbox">
                 <Checkbox
                   checked={
-                    events?.length > 0 &&
-                    selectedIds.length === events.length
+                    events?.length > 0 && selectedIds.length === events.length
                   }
                   onChange={handleSelectAll}
                 />

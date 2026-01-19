@@ -53,12 +53,14 @@ function PendingReservation() {
         `Resturant/ConfirmReservation?ReservationRequestIds=${combinedIds}&StatusType=${StatusType}`
       );
       if (response.data.success) {
+        setSelectedIds([]);
         toast.success(response.data.message);
         getReservations();
       } else {
         toast.error(response.data.message);
       }
     } catch (error) {
+      setSelectedIds([]);
       console.error("Error posting reservation:", error);
     }
   };
