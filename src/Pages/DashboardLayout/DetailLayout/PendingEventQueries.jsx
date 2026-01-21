@@ -13,21 +13,21 @@ import {
 import FormButton from "../../../UIComponents/FormButton";
 import { toast } from "react-toastify";
 
-function PendingReservation() {
-  const [reservations, setReservations] = useState([]);
+function PendingEventQueries() {
+  const [events, setEvents] = useState([]);
   const [selectedIds, setSelectedIds] = useState([]);
-  const getReservations = async () => {
+  const getEvents = async () => {
     try {
       const response = await api.get(
-        "Resturant/GetReservationsByStatus?Status=0"
+        "Resturant/GetEventQueryByStatus?Status=0"
       );
-      setReservations(response.data);
+      setEvents(response.data);
     } catch (error) {
-      console.error("Error fetching reservation count:", error);
+      console.error("Error fetching event:", error);
     }
   };
   useEffect(() => {
-    getReservations();
+    getEvents();
   }, []);
   const handleCheckboxChange = (id) => {
     setSelectedIds((prev) =>
@@ -36,7 +36,7 @@ function PendingReservation() {
   };
   const handleSelectAll = (event) => {
     if (event.target.checked) {
-      const allIds = reservations?.map((res) => res.id);
+      const allIds = events?.map((res) => res.id);
       setSelectedIds(allIds);
     } else {
       setSelectedIds([]);
@@ -44,18 +44,18 @@ function PendingReservation() {
   };
   const handleConfirm = async (StatusType) => {
     if (selectedIds.length === 0) {
-      toast.error("Please select at least one reservation!");
+      toast.error("Please select at least one event query!");
       return;
     }
     const combinedIds = selectedIds.join(",");
     try {
       const response = await api.post(
-        `Resturant/ConfirmReservation?ReservationRequestIds=${combinedIds}&StatusType=${StatusType}`
+        `Resturant/ConfirmEventQueries?EventQueriesIds=${combinedIds}&StatusType=${StatusType}`
       );
       if (response.data.success) {
         setSelectedIds([]);
         toast.success(response.data.message);
-        getReservations();
+        getEvents();
       } else {
         toast.error(response.data.message);
       }
@@ -66,14 +66,14 @@ function PendingReservation() {
   };
   return (
     <div>
-      <p className="pageHeader">Pending Reservations</p>
+      <p className="pageHeader">Pending Event Queries</p>
       <div className="PRbutonDiv">
         <FormButton
-          text="Cancel Reservation"
+          text="Cancel Event Query"
           onClick={() => handleConfirm(2)}
         />
         <FormButton
-          text="Confirm Reservation"
+          text="Confirm Event Query"
           onClick={() => handleConfirm(1)}
         />
       </div>
@@ -84,23 +84,23 @@ function PendingReservation() {
               <TableCell padding="checkbox">
                 <Checkbox
                   checked={
-                    reservations?.length > 0 &&
-                    selectedIds.length === reservations.length
+                    events?.length > 0 && selectedIds.length === events.length
                   }
                   onChange={handleSelectAll}
                 />
               </TableCell>
               <TableCell>ID</TableCell>
-              <TableCell>Reservation Date</TableCell>
-              <TableCell>Reservation By</TableCell>
-              <TableCell>Branch</TableCell>
-              <TableCell>Offer</TableCell>
-              <TableCell>Members</TableCell>
-              <TableCell>Slot</TableCell>
+              <TableCell>Event Type</TableCell>
+              <TableCell>Event Date</TableCell>
+              <TableCell>Service Required</TableCell>
+              <TableCell>Enquiry By</TableCell>
+              <TableCell>Contact Number</TableCell>
+              <TableCell>No of People</TableCell>
+              <TableCell>Timing</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {reservations?.map((res) => (
+            {events?.map((res) => (
               <TableRow key={res.id}>
                 <TableCell padding="checkbox">
                   <Checkbox
@@ -109,12 +109,13 @@ function PendingReservation() {
                   />
                 </TableCell>
                 <TableCell>{res.id}</TableCell>
-                <TableCell>{res.reservationDate}</TableCell>
+                <TableCell>{res.eventType}</TableCell>
+                <TableCell>{res.bookingDate}</TableCell>
+                <TableCell>{res.serviceName}</TableCell>
                 <TableCell>{res.userName}</TableCell>
-                <TableCell>{res.branchName}</TableCell>
-                <TableCell>{res.offer}</TableCell>
-                <TableCell>{res.members}</TableCell>
-                <TableCell>{res.slot}</TableCell>
+                <TableCell>{res.cellNumber}</TableCell>
+                <TableCell>{res.noOfPeople}</TableCell>
+                <TableCell>{res.timing}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -124,4 +125,4 @@ function PendingReservation() {
   );
 }
 
-export default PendingReservation;
+export default PendingEventQueries;

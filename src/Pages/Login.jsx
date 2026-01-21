@@ -56,26 +56,32 @@ export default function Login() {
               {errorMsg}
             </Typography>
           )}
-          <FormInput
-            name="username"
-            value={values.username}
-            onChange={handleChange}
-            placeholder="Username"
-            icon={<PersonIcon />}
-          />
-
-          <FormInput
-            name="password"
-            value={values.password}
-            onChange={handleChange}
-            placeholder="Password"
-            type="password"
-            icon={<LockIcon />}
-            sx={{ mt: 2 }}
-          />
-          <div className="mt-2">
-            <FormButton onClick={handleSubmit} loading={loading} text="Login" />
-          </div>
+          <form onSubmit={handleSubmit}>
+            <FormInput
+              name="username"
+              value={values.username}
+              onChange={handleChange}
+              placeholder="Username"
+              icon={<PersonIcon />}
+            />
+            <FormInput
+              name="password"
+              value={values.password}
+              onChange={handleChange}
+              placeholder="Password"
+              type="password"
+              icon={<LockIcon />}
+              sx={{ mt: 2 }}
+            />
+            <div className="mt-2">
+              <FormButton
+                onClick={handleSubmit}
+                loading={loading}
+                text="Login"
+                type="submit"
+              />
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -1,11 +1,12 @@
 import { Button } from "@mui/material";
 
-const FormButton = ({ onClick, loading = false, text = "Submit", sx = {} }) => {
+const FormButton = ({ onClick, loading = false, text = "Submit", type = "button", sx = {} }) => {
   return (
     <Button
       fullWidth
       variant="contained"
       onClick={onClick}
+      type={type}
       disabled={loading}
       className="CustomButton"
     >
