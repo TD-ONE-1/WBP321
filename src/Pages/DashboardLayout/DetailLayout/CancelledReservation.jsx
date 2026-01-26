@@ -27,14 +27,15 @@ function CancelledReservation() {
   }, []);
   return (
     <div>
-      <p className="pageHeader mb-2">Confirmed Reservations</p>
-      <TableContainer component={Paper}>
+      <p className="pageHeader mb-2">Cancelled Reservations</p>
+      <TableContainer style={{ height: "80vh" }} component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Reservation Date</TableCell>
               <TableCell>Reservation By</TableCell>
+              <TableCell>Reservation Date</TableCell>
+              <TableCell>Reservation Name</TableCell>
+              <TableCell>Contact Number</TableCell>
               <TableCell>Branch</TableCell>
               <TableCell>Offer</TableCell>
               <TableCell>Members</TableCell>
@@ -44,9 +45,10 @@ function CancelledReservation() {
           <TableBody>
             {reservations?.map((res) => (
               <TableRow key={res.id}>
-                <TableCell>{res.id}</TableCell>
-                <TableCell>{res.reservationDate}</TableCell>
                 <TableCell>{res.userName}</TableCell>
+                <TableCell>{res.reservationDate}</TableCell>
+                <TableCell>{res.reservationName}</TableCell>
+                <TableCell>{res.phoneNo}</TableCell>
                 <TableCell>{res.branchName}</TableCell>
                 <TableCell>{res.offer}</TableCell>
                 <TableCell>{res.members}</TableCell>

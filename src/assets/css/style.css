@@ -6,6 +6,9 @@
   column-gap: 10px;
   margin: 10px 0px 10px 0px;
 }
+.css-wveu2x-MuiPaper-root-MuiTableContainer-root{
+      max-height: max-content !important;
+}
 .clndrDiv,
 .top10Div {
   background-color: white;

@@ -74,7 +74,7 @@ function ConfirmReservation() {
         />
         <FormButton text="Confirm Arrival" onClick={() => handleConfirm(3)} />
       </div>
-      <TableContainer component={Paper}>
+      <TableContainer style={{height: "75vh"}} component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
@@ -95,6 +95,7 @@ function ConfirmReservation() {
               <TableCell>Offer</TableCell>
               <TableCell>Members</TableCell>
               <TableCell>Slot</TableCell>
+              <TableCell>Arrived</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -108,12 +109,15 @@ function ConfirmReservation() {
                 </TableCell>
                 <TableCell>{res.userName}</TableCell>
                 <TableCell>{res.reservationDate}</TableCell>
-                <TableCell></TableCell>
-                <TableCell></TableCell>
+                <TableCell>{res.reservationName}</TableCell>
+                <TableCell>{res.phoneNo}</TableCell>
                 <TableCell>{res.branchName}</TableCell>
                 <TableCell>{res.offer}</TableCell>
                 <TableCell>{res.members}</TableCell>
                 <TableCell>{res.slot}</TableCell>
+                <TableCell>
+                  <input type="checkbox" checked={res.isArrived} readOnly />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

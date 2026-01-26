@@ -28,7 +28,7 @@ function TotalEventQueries() {
   return (
     <div>
       <p className="pageHeader mb-2">Total Event Queries</p>
-      <TableContainer component={Paper}>
+      <TableContainer style={{ height: "80vh" }} component={Paper}>
         <Table>
           <TableHead>
             <TableRow>

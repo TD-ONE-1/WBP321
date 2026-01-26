@@ -15,7 +15,7 @@ function CancelledEventQueries() {
   const getEvents = async () => {
     try {
       const response = await api.get(
-        "Resturant/GetEventQueryByStatus?Status=2"
+        "Resturant/GetEventQueryByStatus?Status=2",
       );
       setEvents(response.data);
     } catch (error) {
@@ -28,7 +28,7 @@ function CancelledEventQueries() {
   return (
     <div>
       <p className="pageHeader mb-2">Cancelled Event Queries</p>
-      <TableContainer component={Paper}>
+      <TableContainer style={{ height: "80vh" }} component={Paper}>
         <Table>
           <TableHead>
             <TableRow>

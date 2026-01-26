@@ -19,7 +19,7 @@ function PendingReservation() {
   const getReservations = async () => {
     try {
       const response = await api.get(
-        "Resturant/GetReservationsByStatus?Status=0"
+        "Resturant/GetReservationsByStatus?Status=0",
       );
       setReservations(response.data);
     } catch (error) {
@@ -31,7 +31,7 @@ function PendingReservation() {
   }, []);
   const handleCheckboxChange = (id) => {
     setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
   const handleSelectAll = (event) => {
@@ -50,7 +50,7 @@ function PendingReservation() {
     const combinedIds = selectedIds.join(",");
     try {
       const response = await api.post(
-        `Resturant/ConfirmReservation?ReservationRequestIds=${combinedIds}&StatusType=${StatusType}`
+        `Resturant/ConfirmReservation?ReservationRequestIds=${combinedIds}&StatusType=${StatusType}`,
       );
       if (response.data.success) {
         setSelectedIds([]);
@@ -77,7 +77,7 @@ function PendingReservation() {
           onClick={() => handleConfirm(1)}
         />
       </div>
-      <TableContainer component={Paper}>
+      <TableContainer style={{height: "75vh"}} component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
@@ -90,9 +90,10 @@ function PendingReservation() {
                   onChange={handleSelectAll}
                 />
               </TableCell>
-              <TableCell>ID</TableCell>
-              <TableCell>Reservation Date</TableCell>
               <TableCell>Reservation By</TableCell>
+              <TableCell>Reservation Date</TableCell>
+              <TableCell>Reservation Name</TableCell>
+              <TableCell>Contact Number</TableCell>
               <TableCell>Branch</TableCell>
               <TableCell>Offer</TableCell>
               <TableCell>Members</TableCell>
@@ -108,9 +109,10 @@ function PendingReservation() {
                     onChange={() => handleCheckboxChange(res.id)}
                   />
                 </TableCell>
-                <TableCell>{res.id}</TableCell>
-                <TableCell>{res.reservationDate}</TableCell>
                 <TableCell>{res.userName}</TableCell>
+                <TableCell>{res.reservationDate}</TableCell>
+                <TableCell>{res.reservationName}</TableCell>
+                <TableCell>{res.phoneNo}</TableCell>
                 <TableCell>{res.branchName}</TableCell>
                 <TableCell>{res.offer}</TableCell>
                 <TableCell>{res.members}</TableCell>
