@@ -28,7 +28,7 @@ function ConfirmEventQueries() {
   return (
     <div>
       <p className="pageHeader mb-2">Confirmed Event Queries</p>
-      <TableContainer component={Paper}>
+      <TableContainer style={{ height: "80vh" }} component={Paper}>
         <Table>
           <TableHead>
             <TableRow>

@@ -28,29 +28,35 @@ function TotalReservation() {
   return (
     <div>
       <p className="pageHeader mb-2">Total Reservations</p>
-      <TableContainer component={Paper}>
+      <TableContainer style={{height: "80vh"}} component={Paper}>
         <Table>
           <TableHead>
-            <TableRow>              
-              <TableCell>ID</TableCell>
-              <TableCell>Reservation Date</TableCell>
+            <TableRow>
               <TableCell>Reservation By</TableCell>
+              <TableCell>Reservation Date</TableCell>
+              <TableCell>Reservation Name</TableCell>
+              <TableCell>Contact Number</TableCell>
               <TableCell>Branch</TableCell>
               <TableCell>Offer</TableCell>
               <TableCell>Members</TableCell>
               <TableCell>Slot</TableCell>
+              <TableCell>Arrived</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {reservations?.map((res) => (
               <TableRow key={res.id}>
-                <TableCell>{res.id}</TableCell>
-                <TableCell>{res.reservationDate}</TableCell>
                 <TableCell>{res.userName}</TableCell>
+                <TableCell>{res.reservationDate}</TableCell>
+                <TableCell>{res.reservationName}</TableCell>
+                <TableCell>{res.phoneNo}</TableCell>
                 <TableCell>{res.branchName}</TableCell>
                 <TableCell>{res.offer}</TableCell>
                 <TableCell>{res.members}</TableCell>
                 <TableCell>{res.slot}</TableCell>
+                <TableCell>
+                  <input type="checkbox" checked={res.isArrived} readOnly />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

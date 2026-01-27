@@ -27,7 +27,7 @@ function Reviews() {
   return (
     <div>
       <p className="pageHeader mb-2">Customer Reviews</p>
-      <TableContainer component={Paper}>
+      <TableContainer style={{ height: "80vh" }} component={Paper}>
         <Table>
           <TableHead>
             <TableRow>

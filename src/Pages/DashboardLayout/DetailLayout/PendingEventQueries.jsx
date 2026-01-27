@@ -19,7 +19,7 @@ function PendingEventQueries() {
   const getEvents = async () => {
     try {
       const response = await api.get(
-        "Resturant/GetEventQueryByStatus?Status=0"
+        "Resturant/GetEventQueryByStatus?Status=0",
       );
       setEvents(response.data);
     } catch (error) {
@@ -31,7 +31,7 @@ function PendingEventQueries() {
   }, []);
   const handleCheckboxChange = (id) => {
     setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
   const handleSelectAll = (event) => {
@@ -50,7 +50,7 @@ function PendingEventQueries() {
     const combinedIds = selectedIds.join(",");
     try {
       const response = await api.post(
-        `Resturant/ConfirmEventQueries?EventQueriesIds=${combinedIds}&StatusType=${StatusType}`
+        `Resturant/ConfirmEventQueries?EventQueriesIds=${combinedIds}&StatusType=${StatusType}`,
       );
       if (response.data.success) {
         setSelectedIds([]);
@@ -77,7 +77,7 @@ function PendingEventQueries() {
           onClick={() => handleConfirm(1)}
         />
       </div>
-      <TableContainer component={Paper}>
+      <TableContainer style={{ height: "75vh" }} component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
